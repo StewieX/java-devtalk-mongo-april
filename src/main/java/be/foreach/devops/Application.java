@@ -51,5 +51,16 @@ public class Application implements CommandLineRunner {
 
         Project project1 = projectRepository.findOneByTitle("Inteligent Support Platform");
         System.out.println(project1);
+
+        List<Collaborator> collaborators1 = collaboratorRepository.findByFirstName("Seger");
+        System.out.println(collaborators1);
+
+        List<Collaborator> collaborators2 = collaboratorRepository.findByThePersonsFirstName("Seger");
+        System.out.println(collaborators2);
+
+        List<Collaborator> collaborators3 = collaboratorRepository.findByThePersonsFirstNameFiltered("Seger");
+        System.out.println(collaborators3);
+
+
     }
 }

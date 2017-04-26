@@ -1,6 +1,7 @@
 package be.foreach.devops.domain.Project;
 
 import be.foreach.devops.domain.Collaborator.Collaborator;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder
 public class Project {
     @Id
     private String id;

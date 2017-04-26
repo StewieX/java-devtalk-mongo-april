@@ -26,6 +26,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         collaboratorRepository.deleteAll();
+        projectRepository.deleteAll();
 
         List<Collaborator> collaborators = Arrays.asList(
                 Collaborator.builder()
@@ -40,11 +41,15 @@ public class Application implements CommandLineRunner {
                     .build()
                 );
 
+        collaboratorRepository.save(collaborators);
         Project project = Project.builder()
                 .organisation("ForEach")
-                .title("Intiligent Support Platform")
+                .title("Inteligent Support Platform")
                 .collaborators(collaborators)
                 .build();
         projectRepository.save(project);
+
+        Project project1 = projectRepository.findOneByTitle("Inteligent Support Platform");
+        System.out.println(project1);
     }
 }

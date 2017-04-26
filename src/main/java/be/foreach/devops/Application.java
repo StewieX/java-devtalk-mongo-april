@@ -4,6 +4,7 @@ import be.foreach.devops.domain.Collaborator.Collaborator;
 import be.foreach.devops.domain.Collaborator.CollaboratorRepository;
 import be.foreach.devops.domain.Project.Project;
 import be.foreach.devops.domain.Project.ProjectRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +19,8 @@ public class Application implements CommandLineRunner {
     private CollaboratorRepository collaboratorRepository;
     @Autowired
     private ProjectRepository projectRepository;
+
+    private final static Logger LOG = Logger.getLogger(Application.class);
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -50,16 +53,16 @@ public class Application implements CommandLineRunner {
         projectRepository.save(project);
 
         Project project1 = projectRepository.findOneByTitle("Inteligent Support Platform");
-        System.out.println(project1);
+        LOG.info(project1);
 
         List<Collaborator> collaborators1 = collaboratorRepository.findByFirstName("Seger");
-        System.out.println(collaborators1);
+        LOG.info(collaborators1);
 
         List<Collaborator> collaborators2 = collaboratorRepository.findByThePersonsFirstName("Seger");
-        System.out.println(collaborators2);
+        LOG.info(collaborators2);
 
         List<Collaborator> collaborators3 = collaboratorRepository.findByThePersonsFirstNameFiltered("Seger");
-        System.out.println(collaborators3);
+        LOG.info(collaborators3);
 
 
     }
